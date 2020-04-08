@@ -1,0 +1,97 @@
+// Geometry Setup for simple block detector
+// 24mm x 24mm x 12mm block of scintillator on 16 6mm x 6mm SiPMs
+
+// Global Parameters
+Name SimpleBlock
+Version 1.0
+
+Include $(MEGALIB)/resource/examples/geomega/materials/Materials.geo
+
+// sphere is 3cm radius, centered on 0,0,0
+SurroundingSphere 20.0, 0.0, 0.0, 0.0, 20.0
+
+//------- Materials ---------
+
+Material CsITl
+CsITl.Density 4.51
+CsITl.ComponentByAtoms Cs 1
+CsITl.ComponentByAtoms I 1
+
+Material BGO2
+BGO2.Density 7.13
+BGO2.ComponentByAtoms Bi 4
+BGO2.ComponentByAtoms Ge 3
+BGO2.ComponentByAtoms O 12
+
+Material EJ212
+EJ212.Density 1.023
+EJ212.ComponentByAtoms C 9
+EJ212.ComponentByAtoms H 10
+
+Material EJ240
+EJ240.Density 1.023
+EJ240.ComponentByAtoms C 9
+EJ240.ComponentByAtoms H 10
+
+Echo Materials Loaded
+
+//------- Volumes ---------
+Volume World_Volume
+World_Volume.Shape BOX  10 10 10
+World_Volume.Material Vacuum
+World_Volume.Visibility 1
+World_Volume.Color 0
+World_Volume.Mother 0
+
+Volume BGO_Box
+BGO_Box.Material BGO2
+BGO_Box.Shape BOX 1.2 1.2 0.6
+BGO_Box.Position 0 0 0.6
+BGO_Box.Visibility 1
+BGO_Box.Color 1
+BGO_Box.Mother World_Volume
+
+Volume EJ_Box
+EJ_Box.Material EJ212
+EJ_Box.Shape BOX 1.2 1.2 0.6
+EJ_Box.Position 0 0 -0.6
+EJ_Box.Visibility 1
+EJ_Box.Color 2
+EJ_Box.Mother World_Volume
+
+#Volume Combined_Box
+#Combined_Box.Material Air
+#Combined_Box.Shape BOX 1.2 1.2 1.2
+#Combined_Box.Position 0 0 0
+#Combined_Box.Visibility 0
+#Combined_Box.Color 2
+#Combined_Box.Mother World_Volume
+
+Echo Volumes Loaded
+
+//------- Detectors ---------
+Scintillator BGO_Scint
+BGO_Scint.SensitiveVolume BGO_Box
+BGO_Scint.DetectorVolume BGO_Box
+BGO_Scint.TriggerThreshold 10
+BGO_Scint.NoiseThreshold 10
+BGO_Scint.EnergyResolution Ideal
+
+Scintillator EJ_Scint
+EJ_Scint.SensitiveVolume EJ_Box
+EJ_Scint.DetectorVolume EJ_Box
+EJ_Scint.TriggerThreshold 10
+EJ_Scint.NoiseThreshold 10
+EJ_Scint.EnergyResolution Ideal
+
+Echo Detectors loaded
+
+//------- Triggers ---------
+Trigger BGO_Trig
+BGO_Trig.TriggerByChannel true
+BGO_Trig.Detector BGO_Scint 1
+
+Trigger EJ_Trig
+EJ_Trig.TriggerByChannel true
+EJ_Trig.Detector EG_Scint 1
+Echo Triggers Loaded
