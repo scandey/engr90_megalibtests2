@@ -93,5 +93,5 @@ BGO_Trig.Detector BGO_Scint 1
 
 Trigger EJ_Trig
 EJ_Trig.TriggerByChannel true
-EJ_Trig.Detector EG_Scint 1
+EJ_Trig.Detector EJ_Scint 1
 Echo Triggers Loaded
