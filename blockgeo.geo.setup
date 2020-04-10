@@ -73,15 +73,15 @@ Echo Volumes Loaded
 Scintillator BGO_Scint
 BGO_Scint.SensitiveVolume BGO_Box
 BGO_Scint.DetectorVolume BGO_Box
-BGO_Scint.TriggerThreshold 10
-BGO_Scint.NoiseThreshold 10
+BGO_Scint.TriggerThreshold 5
+BGO_Scint.NoiseThreshold 5
 BGO_Scint.EnergyResolution Ideal
 
 Scintillator EJ_Scint
 EJ_Scint.SensitiveVolume EJ_Box
 EJ_Scint.DetectorVolume EJ_Box
-EJ_Scint.TriggerThreshold 10
-EJ_Scint.NoiseThreshold 10
+EJ_Scint.TriggerThreshold 5
+EJ_Scint.NoiseThreshold 5
 EJ_Scint.EnergyResolution Ideal
 
 Echo Detectors loaded

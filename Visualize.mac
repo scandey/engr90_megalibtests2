@@ -2,7 +2,7 @@
 
 
 #############
-# Stection 1:
+# Section 1:
 # create empty scene
 
 /vis/scene/create
@@ -10,7 +10,7 @@
 
 
 #############
-# Stection 2:
+# Section 2:
 # Choose one of the vizualization engines
 # You must have compiled them into Geant4!
 
