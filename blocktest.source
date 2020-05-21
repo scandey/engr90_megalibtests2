@@ -1,5 +1,6 @@
 // Simulation Setup for simple block detector
 // 24mm x 24mm x 12mm block of scintillator on 16 6mm x 6mm SiPMs
+// saved as blocktest.source
 
 // Global Parameters
 Name SimpleTest
@@ -24,12 +25,12 @@ DiscretizeHits true
 
 //------ Run Options -------
 
-Run SimpleRun
-SimpleRun.FileName SimpleRun_Data
-SimpleRun.Triggers 10000
+Run Cs137Beam
+Cs137Beam.FileName Cesium137Beam_CsITl_EJ212
+Cs137Beam.Triggers 10000
 
-SimpleRun.Source Cs137
+Cs137Beam.Source Cs137
 Cs137.ParticleType 1
 Cs137.Spectrum Mono 662.0
-Cs137.Beam HomogeneousBeam 0.0 0.0 4.0 0.0 0.0 -1.0 1.0
-Cs137.Flux 1.0
+Cs137.Beam HomogeneousBeam 4.0 0.0 0.0 -1.0 0.0 0.0 1.0
+Cs137.Flux 1000.0
